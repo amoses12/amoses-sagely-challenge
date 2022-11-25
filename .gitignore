@@ -1,2 +1,3 @@
 backend/node_modules
 sagely-frontend/node_modules
+.vscode/settings.json
