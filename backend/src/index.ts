@@ -2,16 +2,33 @@
  * Required External Modules
  */
 
- import * as dotenv from 'dotenv';
- import express from 'express';
- import cors from 'cors';
- import helmet from 'helmet';
- import { lessonRouter } from './routers/lesson.router';
+import * as dotenv from 'dotenv';
+dotenv.config();
+import express, { query } from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
+import { lessonRouter } from './routers/lesson.router';
+import { db } from './db/database'
+import { dbSeed } from './db/seedDB';
+import { Lesson } from './models/lesson';
+import { DataSource } from "typeorm"
  
- dotenv.config();
  /**
   * App Variables
   */
+
+db.initialize()
+    .then(async() => {
+      console.log("DB initialized!")
+      const lessonsNumber: number = await db.getRepository(Lesson).count()
+      if (lessonsNumber === 0) {
+        const queryRunner = db.createQueryRunner()
+        await queryRunner.manager.query(dbSeed)
+      }
+ })
+    .catch((err) => {
+     console.error("DB initializiation error: ", err)
+    })
  
  if (!process.env.PORT) {
    process.exit(1);

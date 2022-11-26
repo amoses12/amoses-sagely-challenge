@@ -1,0 +1,62 @@
+version: "3"
+services:
+  sagely-backend:
+    container_name: sagely-backend
+    build:
+      context: .
+      dockerfile: Dockerfile.yml
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/postgres
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DATABASE: ${POSTGRES_DATABASE}
+      NODE_ENV: development
+      PORT: 3001
+    ports:
+      - "3001:3001"
+    networks:
+      - sagelynetwork
+  postgres:
+    container_name: postgres
+    image: postgres:10.4
+    ports:
+      - "5432:5432"
+    volumes: 
+      - ./postgresdata:/var/lib/postgresql/data
+      # - ./src/migrations/seeddb.sql:/docker-entrypoint-initdb.d/seeddb.sql
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DATABASE}
+    networks:
+      - sagelynetwork
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 15s
+      retries: 5
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4:6.16
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${POSTGRES_ADMIN_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${POSTGRES_ADMIN_PASSWORD}
+      PGADMIN_LISTEN_PORT: 80
+    ports:
+      - "3002:80"
+    volumes:
+      - ./servers.json:/pgadmin4/servers.json
+    depends_on:
+      - postgres
+    networks:
+      - sagelynetwork
+volumes:
+    db-data:
+    pgadmin-data:
+networks:
+    sagelynetwork:
