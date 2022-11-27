@@ -21,15 +21,15 @@ I'm sure the sheer amount of files is overwhelming, but I treated this project a
 
 #### /backend
 
-/src/db - database.ts houses a configuration for typeorm to connect to a postgres db - lessons-db.ts is the data access layer - seedDB.ts houses a large sql file as a string to seed a local database
+**/src/db** - database.ts houses a configuration for typeorm to connect to a postgres db - lessons-db.ts is the data access layer - seedDB.ts houses a large sql file as a string to seed a local database
 
-/src/models - lesson.ts is a typeorm entity/class definition for our data structure
+**/src/models** - lesson.ts is a typeorm entity/class definition for our data structure
 
-/src/services - lesson-service.ts houses the business logic (although there's not much to do here except fetch from the data access layer)
+**/src/services** - lesson-service.ts houses the business logic (although there's not much to do here except fetch from the data access layer)
 
-/src/routers - lesson.router.ts defines our endpoints
+**/src/routers** - lesson.router.ts defines our endpoints
 
-/src/test - lessons.seeds.ts houses json objects to return with our mocks/stubs - lessons.stubs.ts contains sinon stubs for testing - lessons.test.ts houses unit tests
+**/src/test** - lessons.seeds.ts houses json objects to return with our mocks/stubs - lessons.stubs.ts contains sinon stubs for testing - lessons.test.ts houses unit tests
 
 The root (/backend) directory houses our main index file as well as docker setup if that's of interest to you
 
@@ -37,19 +37,19 @@ The root (/backend) directory houses our main index file as well as docker setup
 
 All react components consist of a named folder that contains an index.js file and css file
 
-/src/components - reusable components. In this case there's one component that shows the detail view for our data
+**/src/components** - reusable components. In this case there's one component that shows the detail view for our data
 
-/src/pages - page components. In this case, our list page and details page
+**/src/pages** - page components. In this case, our list page and details page
 
-/src/slices - Redux Toolkit slices
+**/src/slices** - Redux Toolkit slices
 
-/src/utils - API. js is our axios client setup
+**/src/utils** - API. js is our axios client setup
 
-/store.js - Redux toolkit store configuration
+**/store.js** - Redux toolkit store configuration
 
-/App.js - Loads our two pages through react-router-dom
+**/App.js** - Loads our two pages through react-router-dom
 
-/index.js - main entrypoint for app
+**/index.js** - main entrypoint for app
 
 Hopefully everything else is self explanatory or can be ignored for the most part, but these are the pieces that I would probably be looking for if I were reviewing this assignment. Let me know if you have any other questions!
 
