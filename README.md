@@ -71,6 +71,11 @@ It is important that the backend services are up and running before running the 
     - run `npm run start`
     - This should automatically open a browser to localhost:3000
 
+### 3.) Stopping the services
+
+frontend: simple `cmd + c` in the terminal
+backend: `cmd + c` in the terminal (if not running in detached mode) followed by `docker-compose down`
+
 ## Connecting pgadmin to postgres
 
     1.) With the backend running, open a browser and navigate to localhost:3002
