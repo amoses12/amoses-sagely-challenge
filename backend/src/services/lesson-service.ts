@@ -1,14 +1,13 @@
-import { db } from '../db/database'
+import { db } from '../db/database';
 import { Lesson } from '../models/lesson';
+import * as dataLayer from '../db/lessons-db';
 
 export async function getLessons(): Promise<Lesson[]> {
-    const lessons = await db.getRepository(Lesson).find()
-    return lessons
-} 
+  const lessons = await dataLayer.getAllLessons();
+  return lessons;
+}
 
-export async function getLessonById(lessonId: string): Promise<Lesson>{
-    const lesson = await db.getRepository(Lesson).findOneBy({
-        id: lessonId
-    })
-    return lesson
+export async function getLessonById(lessonId: string): Promise<Lesson> {
+  const lesson = await dataLayer.getLessonById(lessonId);
+  return lesson;
 }
