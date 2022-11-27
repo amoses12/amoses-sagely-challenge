@@ -1,43 +1,77 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-    setLessons,
-    setSelectedLesson
-} from '../../slices/lessonSlice';
+import { useNavigate } from 'react-router-dom';
+import { setLessons, setSelectedLesson } from '../../slices/lessonSlice';
 import API from '../../utils/API';
-import { Container, Row, Col } from 'react-bootstrap';
-import { Balance } from '../../components/balance';
+import { Container, Row, Col, Button } from 'react-bootstrap';
+import Table from 'react-bootstrap/Table';
 
 import './lessonList.css';
 
-const LessonsPage = (props) => {
-  const lessons = useSelector(
-    (state) => state.lesson.lessons
-  );
-  const selectedLesson = useSelector ((state) => state.lesson.selectedLesson)
-const dispatch = useDispatch()
+const LessonsList = (props) => {
+  const lessons = useSelector((state) => state.lessons.lessons);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  async function getLessons() {
-    const lessonsResponse = await API.get(`/lessons`);
+  useEffect(() => {
+    async function fetchData() {
+      const lessonsResponse = await API.get(`/lessons`);
+      dispatch(setLessons(lessonsResponse.data));
+    }
+    fetchData();
+  }, [dispatch]);
 
-    dispatch(setLessons(lessonsResponse.data));
-   
-  }
+  const handleClick = (e, lesson) => {
+    dispatch(setSelectedLesson(lesson));
+    return navigate('/details');
+  };
+
+  const LessonsTable = () => {
+    return (
+      <Table striped hover bordered variant="dark">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Tags</th>
+            <th>URL</th>
+            <th>View Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          {lessons.map((lesson) => (
+            <tr>
+              <td>{lesson.title}</td>
+              <td>{lesson.author}</td>
+              <td>{lesson.manualTags}</td>
+              <td>
+                <a href={lesson.url} target="_blank" rel="noreferrer noopener">
+                  {lesson.url}
+                </a>
+              </td>
+              <td>
+                <Button onClick={(e) => handleClick(e, lesson)}>Details</Button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    );
+  };
 
   return (
-    <Container className='main-container'>
-      <Row className='headerContainer'>
+    <Container className="main-container">
+      <Row className="headerContainer">
         <Col md={12}>
-          <h1 className='lessons-header'>Check out our lessons!</h1>
+          <h1 className="lessons-header">Check out our lessons!</h1>
         </Col>
       </Row>
       <Row>
+        <LessonsTable />
       </Row>
-      <Row>
-     
-      </Row>
+      <Row></Row>
     </Container>
   );
 };
 
-export default LessonsPage;
+export default LessonsList;

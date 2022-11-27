@@ -1,9 +1,37 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    lessons: [],
+    lessons: [
+        {
+            id: "",
+            url: "",
+            manualTags: "",
+            abstractNote: "",
+            date: "",
+            dateAdded: "",
+            dateModified: "",
+            accessDate: "",
+            key: "",
+            itemType: "",
+            publicationYear: "",
+            author: "",
+            title: "",
+        }
+    ],
     selectedLesson: {
-
+        id: "",
+        url: "",
+        manualTags: "",
+        abstractNote: "",
+        date: "",
+        dateAdded: "",
+        dateModified: "",
+        accessDate: "",
+        key: "",
+        itemType: "",
+        publicationYear: "",
+        author: "",
+        title: "",
     }
 };
 
