@@ -52,7 +52,8 @@ services:
     volumes:
       - ./servers.json:/pgadmin4/servers.json
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     networks:
       - sagelynetwork
 volumes:
