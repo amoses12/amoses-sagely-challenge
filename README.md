@@ -79,7 +79,7 @@ backend: `cmd + c` in the terminal (if not running in detached mode) followed by
 ## Connecting pgadmin to postgres
 
     1.) With the backend running, open a browser and navigate to localhost:3002
-    2.) Enter the username and password found in the .env under POSTGRES_ADMIN_EMAIL and POSTGRES_ADMIN_PASSWORD
+    2.) Enter the username and password found in the .env under POSTGRES_ADMIN_EMAIL and POSTGRES_ADMIN_PASSWORD (in this case test@test.com and Password1234)
     3.) Click 'Add New Server'
     4.) In the first dialog, add any name you would like to the Name field. Every other field can be left as the default
     5.) In the tabs at the top, click the connection tab.
