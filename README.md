@@ -14,6 +14,9 @@ I've included unit tests and stubs for the backend, but there's no business logi
 
 ### Project Architecture
 
+The backend is a dockerized node express app using typescript and typeorm with a postgresql database.
+The front end is a react app using create-react-app and uses redux toolkit for state management.
+
 I'm sure the sheer amount of files is overwhelming, but I treated this project as a setup for a project that can be built upon. I feel it's a better demonstration of what a software engineer would be doing day to day. Here's a quick synopsis of the relevent files I'm sure you'll want to look at:
 
 #### /backend
