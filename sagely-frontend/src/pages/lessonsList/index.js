@@ -28,7 +28,7 @@ const LessonsList = (props) => {
 
   const LessonsTable = () => {
     return (
-      <Table striped hover bordered variant="dark">
+      <Table striped hover bordered variant="dark" className="listTable">
         <thead>
           <tr>
             <th>Title</th>
@@ -60,16 +60,10 @@ const LessonsList = (props) => {
   };
 
   return (
-    <Container className="main-container">
-      <Row className="headerContainer">
-        <Col md={12}>
-          <h1 className="lessons-header">Check out our lessons!</h1>
-        </Col>
-      </Row>
+    <Container className="mainContainer">
       <Row>
         <LessonsTable />
       </Row>
-      <Row></Row>
     </Container>
   );
 };

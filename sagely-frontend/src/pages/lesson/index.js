@@ -18,10 +18,7 @@ const LessonDetails = (props) => {
     <Container className="main-container">
       <Row>
         <Col md={2}>
-          <Button
-            variant="outline-primary"
-            onClick={() => handleNavigateHome()}
-          >
+          <Button variant="primary" onClick={() => handleNavigateHome()}>
             Back To List
           </Button>{' '}
         </Col>

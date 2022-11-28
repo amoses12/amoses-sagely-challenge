@@ -2,11 +2,13 @@ import React from 'react';
 import { Descriptions } from 'antd';
 import { useSelector } from 'react-redux';
 
+import './lessonCard.css';
+
 const LessonCard = () => {
   const selectedLesson = useSelector((state) => state.lessons.selectedLesson);
 
   return (
-    <div>
+    <div className='table-data'>
       <Descriptions
         title={selectedLesson.title}
         bordered

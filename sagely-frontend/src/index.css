@@ -11,3 +11,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+h1 {
+  font-family: mixta-sharp-alt, sans-serif;
+  font-size: 4em;
+  line-height: 1.1em;
+  font-weight: 700;
+}
+
+h2 {
+  font-family: mixta-sharp-alt, sans-serif;
+  font-size: 2em;
+  line-height: 1.25em;
+  font-weight: 700;
+}
+
+td {
+  font-family: 'Gotham book', sans-serif;
+  font-size: 1em;
+  line-height: 150%;
+}

@@ -1,0 +1,12 @@
+td {
+  word-wrap: break-word;
+  max-width: 500px;
+}
+
+.listTable {
+  margin: 10px auto;
+}
+
+.mainContainer {
+  margin: 0px auto;
+}
