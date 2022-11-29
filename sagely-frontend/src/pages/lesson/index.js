@@ -32,7 +32,7 @@ const LessonDetails = (props) => {
       <Row>
         <LessonCard />
       </Row>
-      <Row>
+      <Row className="descriptionContainer">
         <h4>Description</h4>
         <p>{selectedLesson.abstractNote}</p>
       </Row>
