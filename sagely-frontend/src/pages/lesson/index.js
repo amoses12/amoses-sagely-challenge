@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 
@@ -9,6 +9,12 @@ import { useSelector } from 'react-redux';
 const LessonDetails = (props) => {
   const selectedLesson = useSelector((state) => state.lessons.selectedLesson);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (selectedLesson.title === '') {
+      return navigate('/');
+    }
+  }, [selectedLesson.title, navigate]);
 
   function handleNavigateHome(lesson) {
     return navigate('/');

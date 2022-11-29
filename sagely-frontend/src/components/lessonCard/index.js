@@ -8,7 +8,7 @@ const LessonCard = () => {
   const selectedLesson = useSelector((state) => state.lessons.selectedLesson);
 
   return (
-    <div className='table-data'>
+    <div className="table-data">
       <Descriptions
         title={selectedLesson.title}
         bordered
@@ -29,7 +29,7 @@ const LessonCard = () => {
         <Descriptions.Item label="Date Added">
           {selectedLesson.dateAdded}
         </Descriptions.Item>
-        <Descriptions.Item label="publication Year">
+        <Descriptions.Item label="Publication Year">
           {selectedLesson.publicationYear}
         </Descriptions.Item>
         <Descriptions.Item label="Key">{selectedLesson.key}</Descriptions.Item>
