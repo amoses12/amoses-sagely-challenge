@@ -31,3 +31,7 @@ td {
   font-size: 1em;
   line-height: 150%;
 }
+
+#root {
+  background-color: #759e8f;
+}
